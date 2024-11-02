@@ -1,0 +1,26 @@
+name: Sync to Gitee
+
+on:
+  push:
+    branches:
+      - main  # 您的默认分支或您想要监控的分支
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+
+    - name: Push to Gitee
+      env:
+        GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+      run: |
+        git remote add gitee https://oauth2:${GITEE_TOKEN}@gitee.com/gentleleaf/ss.git
+        git push gitee main:main --force
