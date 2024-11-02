@@ -32,7 +32,7 @@ if j.status_code == 200:
     l = binascii.unhexlify(k)
     m = f(l, d, e)
     n = json.loads(m)
-    with open(output_file_path, 'a') as file: 
+    with open(output_file_path, 'w') as file: 
         for o in n['data']:
             p = f"aes-256-cfb:{o['password']}@{o['ip']}:{o['port']}"
             q = base64.b64encode(p.encode('utf-8')).decode('utf-8')
