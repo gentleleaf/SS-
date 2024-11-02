@@ -4,6 +4,7 @@ import json
 import pyaes
 import binascii
 from datetime import datetime
+import pytz  # 导入 pytz 库
 
 a = 'http://api.skrapp.net/api/serverlist'
 b = {
@@ -33,8 +34,9 @@ if j.status_code == 200:
     m = f(l, d, e)
     n = json.loads(m)
 
-    # 获取当前时间并格式化为字符串
-    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    # 获取当前时间并设置为北京时间
+    beijing_tz = pytz.timezone('Asia/Shanghai')  # 设置为北京时间
+    current_time = datetime.now(beijing_tz).strftime("%Y-%m-%d %H:%M:%S")
     
     # 创建一个时间节点
     time_node = f"aes-256-cfb:time_node@0.0.0.0:0"  # 使用占位符的节点信息
