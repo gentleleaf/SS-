@@ -1,4 +1,4 @@
-name: Run Python Script
+name: Update and Sync
 
 on:
   schedule:
@@ -6,12 +6,14 @@ on:
   workflow_dispatch:  # 允许手动触发工作流
 
 jobs:
-  run-script:
+  update-and-sync:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0  # 确保完整克隆
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -26,15 +28,38 @@ jobs:
       run: |
         python ss.py  # 运行您的脚本
 
-    - name: Commit and Push output.txt
+    - name: Commit and Push output.txt to GitHub
       run: |
         git config --global user.name "GitHub Actions"
         git config --global user.email "actions@github.com"
+        
         git add output.txt
-        git commit -m "Update output.txt"
-        git push
+        
+        if ! git diff --cached --quiet; then
+          git commit -m "Update output.txt"
+          git push
+        else
+          echo "No changes to output.txt, skipping GitHub push."
+        fi
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Add Gitee Remote
+      run: |
+        git remote add gitee https://oauth2:${{ secrets.GITEE_TOKEN }}@gitee.com/gentleleaf/ss.git
+
+    - name: Commit and Push output.txt to Gitee
+      run: |
+        git add output.txt
+        
+        if ! git diff --cached --quiet; then
+          git commit -m "Update output.txt"
+          git push gitee main --force
+        else
+          echo "No changes to output.txt, skipping Gitee push."
+        fi
+      env:
+        GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
 
     - name: Send Notification to Telegram
       run: |
