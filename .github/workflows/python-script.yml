@@ -2,7 +2,7 @@ name: Run Python Script
 
 on:
   schedule:
-    - cron: '*/30 * * * *'  # 每半小时触发一次
+    - cron: '*/30 * * * *'  # 每半小时运行一次
   workflow_dispatch:  # 允许手动触发工作流
 
 jobs:
@@ -24,7 +24,7 @@ jobs:
 
     - name: Run Python Script
       run: |
-        python ss.py  # 自动运行 ss.py 脚本
+        python ss.py  # 运行您的脚本
 
     - name: Commit and Push output.txt
       run: |
@@ -35,3 +35,7 @@ jobs:
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Send Notification to Telegram
+      run: |
+        curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" -d "text=SS节点更新成功！"
