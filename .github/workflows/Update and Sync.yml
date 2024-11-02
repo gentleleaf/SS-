@@ -37,7 +37,7 @@ jobs:
         
         if ! git diff --cached --quiet; then
           git commit -m "Update output.txt"
-          git push
+          git push --force
         else
           echo "No changes to output.txt, skipping GitHub push."
         fi
@@ -54,7 +54,7 @@ jobs:
         
         if ! git diff --cached --quiet; then
           git commit -m "Update output.txt"
-          git push gitee main --force
+          git push gitee main --force  # 强制推送到 Gitee
         else
           echo "No changes to output.txt, skipping Gitee push."
         fi
