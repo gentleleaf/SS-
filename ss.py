@@ -39,9 +39,7 @@ if j.status_code == 200:
     current_time = datetime.now(beijing_tz).strftime("%Y-%m-%d %H:%M:%S")
     
     # 创建一个时间节点
-    time_node = f"aes-256-cfb:time_node@0.0.0.0:0"  # 使用占位符的节点信息
-    time_node_base64 = base64.b64encode(time_node.encode('utf-8')).decode('utf-8')
-    time_subscribe = f"ss://{time_node_base64}#{current_time}"
+    time_subscribe = f"ss://YWVzLTI1Ni1jZmI6YW1hem9uc2tyMDU=@time:5000#更新时间:{current_time}"
     
     with open(output_file_path, 'w') as file:  # 使用 'w' 模式覆盖写入文件
         # 写入时间节点到文件
