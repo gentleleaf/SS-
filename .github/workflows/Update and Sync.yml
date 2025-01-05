@@ -54,3 +54,8 @@ jobs:
     - name: Send Notification to Telegram
       run: |
         curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" -d "text=SS节点更新成功！"
+
+    - name: Upload output.txt to IPv6 Server
+      run: |
+        curl -X PUT --data-binary @output.txt "http://[2409:8a20:249b:a350:c110:2f17:d524:f7da]:5007/output.txt"
+        echo "File successfully uploaded to IPv6 server"
