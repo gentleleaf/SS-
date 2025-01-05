@@ -39,18 +39,6 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Add Gitee Remote
-      run: |
-        git remote add gitee https://oauth2:${{ secrets.GITEE_TOKEN }}@gitee.com/gentleleaf/ss.git
-
-    - name: Commit and Push output.txt to Gitee
-      run: |
-        git add output.txt
-        git commit -m "Update output.txt" || echo "No changes to commit"
-        git push gitee main --force  # 强制推送到 Gitee
-      env:
-        GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
-
     - name: Send Notification to Telegram
       run: |
         curl -X POST "https://api.telegram.org/bot${{ secrets.TELEGRAM_BOT_TOKEN }}/sendMessage" -d "chat_id=${{ secrets.TELEGRAM_CHAT_ID }}" -d "text=SS节点更新成功！"
