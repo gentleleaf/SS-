@@ -1,0 +1,50 @@
+proxies:
+  - name: "Hy2-s1-nft6gq083"
+    type: hysteria2
+    server: 213.189.54.126
+    port: 11349
+    auth_str: "bf773db8-967b-4b5e-aa8d-5f0a5b8c1f04"
+    sni: "www.bing.com"
+    alpn:
+      - h3
+    skip-cert-verify: true
+
+  - name: "Hy2-s15-yeinorrhmane"
+    type: hysteria2
+    server: 65.21.206.16
+    port: 14058
+    auth_str: "73654903-39d9-44f9-a9df-1c6ff837c336"
+    sni: "www.bing.com"
+    alpn:
+      - h3
+    skip-cert-verify: true
+
+  - name: "Hy2-s13-sdjinenu"
+    type: hysteria2
+    server: 128.204.223.43
+    port: 23563
+    auth_str: "7a499f73-ed4b-43bb-9b34-b9d6f0cae96b"
+    sni: "www.bing.com"
+    alpn:
+      - h3
+    skip-cert-verify: true
+
+  - name: "Hy2-s12-gentleleaf0005"
+    type: hysteria2
+    server: 85.194.246.115
+    port: 44167
+    auth_str: "32d6799f-d0e1-4c9b-8020-b45943356ae6"
+    sni: "www.bing.com"
+    alpn:
+      - h3
+    skip-cert-verify: true
+
+  - name: "Hy2-s11-gentleleaf0002"
+    type: hysteria2
+    server: 128.204.223.117
+    port: 27059
+    auth_str: "7e41ba56-0d37-4d48-acba-184167a7ac5f"
+    sni: "www.bing.com"
+    alpn:
+      - h3
+    skip-cert-verify: true
