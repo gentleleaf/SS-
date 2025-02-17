@@ -1,5 +1,4 @@
 hysteria2://bf773db8-967b-4b5e-aa8d-5f0a5b8c1f04@213.189.54.126:11349/?sni=www.bing.com&alpn=h3&insecure=1#Hy2-s1-nft6gq083
-hysteria2://73654903-39d9-44f9-a9df-1c6ff837c336@65.21.206.16:14058/?sni=www.bing.com&alpn=h3&insecure=1#Hy2-s15-yeinorrhmane
 hysteria2://7a499f73-ed4b-43bb-9b34-b9d6f0cae96b@128.204.223.43:23563/?sni=www.bing.com&alpn=h3&insecure=1#Hy2-s13-sdjinenu
 hysteria2://32d6799f-d0e1-4c9b-8020-b45943356ae6@85.194.246.115:44167/?sni=www.bing.com&alpn=h3&insecure=1#Hy2-s12-gentleleaf0005
 hysteria2://9b4248b0-8afd-4102-85ae-0fc39c171e03@128.204.223.118:27059/?sni=www.bing.com&alpn=h3&insecure=1#Hy2-s11-gentleleaf0002
